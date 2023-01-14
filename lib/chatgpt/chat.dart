@@ -63,7 +63,7 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        toolbarHeight: 60,
+        toolbarHeight: 100,
         title: Padding(
           padding: EdgeInsets.only(left: 0),
           child: Image.asset(
@@ -71,7 +71,7 @@ class _ChatPageState extends State<ChatPage> {
             height: 50,
           ),
         ),
-        backgroundColor: botBackgroundColor,
+        backgroundColor: Colors.amber,
       ),
       backgroundColor: backgroundColor,
       body: SafeArea(
@@ -253,7 +253,7 @@ class ChatMessageWidget extends StatelessWidget {
                         ),
                       ),
                     ),
-                    
+
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
