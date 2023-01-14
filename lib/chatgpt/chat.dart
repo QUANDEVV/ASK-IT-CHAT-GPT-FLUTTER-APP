@@ -1,13 +1,12 @@
 import 'dart:convert';
 
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 
 import '../apikey/api.dart';
 import 'model.dart';
-
-
 
 const backgroundColor = Colors.black45;
 const botBackgroundColor = Color(0xff444654);
@@ -23,8 +22,6 @@ class ChatPage extends StatefulWidget {
 }
 
 Future<String> generateResponse(String prompt) async {
-
-
   var url = Uri.https("api.openai.com", "/v1/completions");
   final response = await http.post(
     url,
@@ -53,6 +50,7 @@ class _ChatPageState extends State<ChatPage> {
   final _scrollController = ScrollController();
   final List<ChatMessage> _messages = [];
   late bool isLoading;
+  late String _copiedText;
 
   @override
   void initState() {
@@ -64,17 +62,16 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      centerTitle: true,
+        centerTitle: true,
         toolbarHeight: 60,
-        title:  Padding(
-          padding: EdgeInsets.only(left:0),
-          child: Image.asset('assets/1024.png',
-          height: 50,
+        title: Padding(
+          padding: EdgeInsets.only(left: 0),
+          child: Image.asset(
+            'assets/1024.png',
+            height: 50,
           ),
-        
         ),
         backgroundColor: botBackgroundColor,
-        
       ),
       backgroundColor: backgroundColor,
       body: SafeArea(
@@ -167,12 +164,17 @@ class _ChatPageState extends State<ChatPage> {
           enabledBorder: InputBorder.none,
           errorBorder: InputBorder.none,
           disabledBorder: InputBorder.none,
-          
-          
         ),
       ),
     );
   }
+
+  // THE OUTPUT AFTER ASKING A QUESTION IS DISPLAYED HERE
+  // THE OUTPUT AFTER ASKING A QUESTION IS DISPLAYED HERE
+  // THE OUTPUT AFTER ASKING A QUESTION IS DISPLAYED HERE
+  // THE OUTPUT AFTER ASKING A QUESTION IS DISPLAYED HERE
+  // THE OUTPUT AFTER ASKING A QUESTION IS DISPLAYED HERE
+  // THE OUTPUT AFTER ASKING A QUESTION IS DISPLAYED HERE
 
   ListView _buildList() {
     return ListView.builder(
@@ -183,6 +185,14 @@ class _ChatPageState extends State<ChatPage> {
         return ChatMessageWidget(
           text: message.text,
           chatMessageType: message.chatMessageType,
+          onCopy: () {
+            _copiedText = message.text;
+            Clipboard.setData(ClipboardData(text: _copiedText));
+            // Scaffold.of(context).showSnackBar(SnackBar(
+            //   content: Text('Copied to clipboard'),
+            //   duration: Duration(seconds: 1),
+            // ));
+          },
         );
       },
     );
@@ -197,69 +207,83 @@ class _ChatPageState extends State<ChatPage> {
   }
 }
 
+// THE OUTPUT UI WILL LOOK LIKE THIS
+// THE OUTPUT UI WILL LOOK LIKE THIS
+// THE OUTPUT UI WILL LOOK LIKE THIS
+
 class ChatMessageWidget extends StatelessWidget {
   const ChatMessageWidget(
-      {super.key, required this.text, required this.chatMessageType});
+      {super.key,
+      required this.text,
+      required this.chatMessageType,
+      required this.onCopy});
 
   final String text;
+  final VoidCallback onCopy;
   final ChatMessageType chatMessageType;
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10.0),
-      padding: const EdgeInsets.all(16),
-      color: chatMessageType == ChatMessageType.bot
-          ? Colors.black45
-          : backgroundColor,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          
-          chatMessageType == ChatMessageType.bot
-              ? Container(
-                  margin: const EdgeInsets.only(right: 16.0),
-                  child: CircleAvatar(
-                    backgroundColor: const Color.fromRGBO(16, 163, 127, 1),
-                    child: Image.asset(
-                      'assets/1024.png',
-                     
-                      scale: 1.5,
+    return Column(
+      children: [
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 10.0),
+          padding: const EdgeInsets.all(16),
+          color: chatMessageType == ChatMessageType.bot
+              ? Colors.black45
+              : backgroundColor,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              chatMessageType == ChatMessageType.bot
+                  ? Container(
+                      margin: const EdgeInsets.only(right: 16.0),
+                      child: CircleAvatar(
+                        backgroundColor: const Color.fromRGBO(16, 163, 127, 1),
+                        child: Image.asset(
+                          'assets/1024.png',
+                          scale: 1.5,
+                        ),
+                      ),
+                    )
+                  : Container(
+                      margin: const EdgeInsets.only(right: 16.0),
+                      child: const CircleAvatar(
+                        child: Icon(
+                          Icons.person,
+                        ),
+                      ),
                     ),
-                  ),
-                )
-              : Container(
-                  margin: const EdgeInsets.only(right: 16.0),
-                  child: const CircleAvatar(
-                    child: Icon(
-                      Icons.person,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                      ),
+                      child: Text(
+                        text,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge
+                            ?.copyWith(color: Colors.white),
+                      ),
                     ),
-                  ),
-                  
+                    IconButton(
+                      icon: chatMessageType == ChatMessageType.bot
+                          ? Icon(Icons.content_copy)
+                          : Row(),
+                      color: Colors.white,
+                      onPressed: onCopy,
+                    ),
+                  ],
                 ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  padding: const EdgeInsets.all(8.0),
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                  ),
-                  child: Text(
-                    text,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-        
-      ),
+        ),
+      ],
     );
   }
 }
