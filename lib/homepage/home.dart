@@ -88,7 +88,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Travel',
+                        child: Text('Relationship',
                         style: GoogleFonts.poppins(
                           fontSize: 12,
                           color: Colors.white
@@ -135,7 +135,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Essays',
+                        child: Text('Zodiac',
                        style: GoogleFonts.poppins(
                           fontSize: 12,
                           color: Colors.white
@@ -187,7 +187,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Zodiac',
+                        child: Text('Mental Health',
                        style: GoogleFonts.poppins(
                           fontSize: 12,
                           color: Colors.white
@@ -233,7 +233,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Code',
+                        child: Text('Workouts',
                        style: GoogleFonts.poppins(
                           fontSize: 12,
                           color: Colors.white
@@ -386,7 +386,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Mental Health ',
+                        child: Text('Coding',
                         style: TextStyle(
                           color: Colors.white
                         ),
@@ -431,7 +431,7 @@ class _HomeState extends State<Home> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text('Relationships',
+                        child: Text('Food',
                         style: TextStyle(
                           color: Colors.white
                         ),
