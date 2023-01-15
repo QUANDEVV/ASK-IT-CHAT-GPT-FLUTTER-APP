@@ -1,5 +1,6 @@
 import 'package:chats/CHATGPT/chat.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class Home extends StatefulWidget {
@@ -16,7 +17,12 @@ class _HomeState extends State<Home> {
       // drawer: Drawer(
       // ),
       appBar: AppBar(
-      title: Text('AI Services'),
+        
+      title: Text('Ask it',
+      style: GoogleFonts.poppins(
+        color: Colors.black
+      )),
+      backgroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -57,9 +63,11 @@ class _HomeState extends State<Home> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Chat GPT',
-                    style: TextStyle(
+                    child: Text('Relationship',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
                       color: Colors.white
+                      
                     ),
                     
                     ),
@@ -102,8 +110,9 @@ Padding(
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Image generator',
-                    style: TextStyle(
+                    child: Text('Essays',
+                   style: GoogleFonts.poppins(
+                      fontSize: 12,
                       color: Colors.white
                     ),
                     
@@ -153,8 +162,9 @@ Row(
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Text To Speech',
-                    style: TextStyle(
+                    child: Text('Zodiac',
+                   style: GoogleFonts.poppins(
+                      fontSize: 12,
                       color: Colors.white
                     ),
                     
@@ -198,8 +208,9 @@ Padding(
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('Speech To Text',
-                    style: TextStyle(
+                    child: Text('',
+                   style: GoogleFonts.poppins(
+                      fontSize: 12,
                       color: Colors.white
                     ),
                     

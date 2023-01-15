@@ -63,7 +63,7 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        toolbarHeight: 100,
+        
         title: Padding(
           padding: EdgeInsets.only(left: 0),
           child: Image.asset(
@@ -71,12 +71,13 @@ class _ChatPageState extends State<ChatPage> {
             height: 50,
           ),
         ),
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.white,
       ),
       backgroundColor: backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
+            
             Expanded(
               child: _buildList(),
             ),
@@ -157,7 +158,7 @@ class _ChatPageState extends State<ChatPage> {
         style: const TextStyle(color: Colors.white),
         controller: _textController,
         decoration: const InputDecoration(
-          fillColor: botBackgroundColor,
+          fillColor: Colors.white,
           filled: true,
           border: InputBorder.none,
           focusedBorder: InputBorder.none,
