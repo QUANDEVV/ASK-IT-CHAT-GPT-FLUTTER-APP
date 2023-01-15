@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import '../apikey/api.dart';
 import 'model.dart';
 
-const backgroundColor = Colors.black45;
+const backgroundColor = Color.fromARGB(255, 1, 77, 58);
 const botBackgroundColor = Color(0xff444654);
 
 // const backgroundColor = Colors.black45;
@@ -62,12 +62,15 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         centerTitle: true,
         
         title: Padding(
           padding: EdgeInsets.only(left: 0),
+          
           child: Image.asset(
             'assets/1024.png',
+   color:   Color.fromRGBO(16, 163, 127, 1),
             height: 50,
           ),
         ),
@@ -155,7 +158,7 @@ class _ChatPageState extends State<ChatPage> {
     return Expanded(
       child: TextField(
         textCapitalization: TextCapitalization.sentences,
-        style: const TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.black),
         controller: _textController,
         decoration: const InputDecoration(
           fillColor: Colors.white,
@@ -276,7 +279,7 @@ class ChatMessageWidget extends StatelessWidget {
                       icon: chatMessageType == ChatMessageType.bot
                           ? Icon(Icons.content_copy)
                           : Row(),
-                      color: Colors.white,
+                      color: Color.fromRGBO(16, 163, 127, 1),
                       onPressed: onCopy,
                     ),
                   ],

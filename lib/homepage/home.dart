@@ -17,13 +17,18 @@ class _HomeState extends State<Home> {
       // drawer: Drawer(
       // ),
       appBar: AppBar(
-        
-      title: Text('Ask it',
-      style: GoogleFonts.poppins(
-        color: Colors.black
-      )),
-      backgroundColor: Colors.white,
-      ),
+  leading: Image.asset('assets/1024.png',
+   color:   Color.fromRGBO(16, 163, 127, 1),
+
+  
+  ),
+  title: Text('Ask it',
+    style: GoogleFonts.poppins(
+      color: Colors.black
+    ),
+  ),
+  backgroundColor: Colors.white,
+),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
@@ -208,7 +213,7 @@ Padding(
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('',
+                    child: Text('Code',
                    style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: Colors.white
